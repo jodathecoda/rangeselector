@@ -11,6 +11,9 @@ hu_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\headsup.png"))
 pushfold_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\pushfold.png"))
 BTN_open11_15_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BTN_open11_15.png"))
 BTN_open17_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BTN_open17.png"))
+BTN_open10_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BTN_open10.png"))
+SB_btn_folds11_16_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\SB_btn_folds11_16.png"))
+SB_btn_folds17_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\SB_btn_folds17.png"))
 
 # A Radiobutton to toggle between images
 position = IntVar()
@@ -19,26 +22,32 @@ action = IntVar()
 
 def call():
     canvas.delete(ALL)
-    if bigblinds.get() == 10:
-        canvas.create_image((2, 2), image=pushfold_img, anchor=NW)
-        Label(root, text ="LB=push/call  Y=push/fold").grid(row=0, column=0, columnspan=5, sticky=S)
-    else: 
-        if position.get() == 4:
+    if position.get() == 4:
+        #heads up
+        if bigblinds.get() == 10:
+            canvas.create_image((2, 2), image=pushfold_img, anchor=NW)
+        else:
             canvas.create_image((2, 2), image=hu_img, anchor=NW)
-            Label(root, text ="R=raise  G=call  B=fold").grid(row=0, column=0, columnspan=5, sticky=S)
-        elif position.get() == 1:
-            if bigblinds.get() == 11:
-                canvas.create_image((2, 2), image=BTN_open11_15_img, anchor=NW)
-                Label(root, text ="R=raise  G=call  B=fold").grid(row=0, column=0, columnspan=5, sticky=S)
-            elif bigblinds.get() == 17:
-                canvas.create_image((2, 2), image=BTN_open17_img, anchor=NW)
-                Label(root, text ="R=raise  G=call  B=fold").grid(row=0, column=0, columnspan=5, sticky=S)
-            else:
-                canvas.create_image((2, 2), image=pushfold_img, anchor=NW)
-                Label(root, text ="LB=push/call  Y=push/fold").grid(row=0, column=0, columnspan=5, sticky=S)
+    elif position.get() == 1:
+        #btn spingo
+        if bigblinds.get() == 11:
+            canvas.create_image((2, 2), image=BTN_open11_15_img, anchor=NW)
+        elif bigblinds.get() == 17:
+            canvas.create_image((2, 2), image=BTN_open17_img, anchor=NW)
+        else:
+            canvas.create_image((2, 2), image=BTN_open10_img, anchor=NW)
+    elif position.get() == 2:
+        #sb spingo
+        if bigblinds.get() == 11 and action.get() == 5:
+            canvas.create_image((2, 2), image=SB_btn_folds11_16_img, anchor=NW)
+        elif bigblinds.get() == 17 and action.get() == 5:
+            canvas.create_image((2, 2), image=SB_btn_folds17_img, anchor=NW)
+        elif bigblinds.get() == 10 and action.get() == 5:
+            canvas.create_image((2, 2), image=pushfold_img, anchor=NW)
+            
 
 #Description
-Label(root, text ="R=raise  G=call  B=fold").grid(row=0, column=0, columnspan=5, sticky=S)
+#L1=Label(root, text ="R=raise  G=call  B=fold").grid(row=0, column=0, columnspan=5, sticky=S)
 
 #Position selection
 R1=Radiobutton(root, text="BTN", variable=position, value=1, command=call)

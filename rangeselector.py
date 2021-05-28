@@ -7,13 +7,28 @@ cwd = os.getcwd()
 
 root = Tk() 
 
-hu_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\headsup.png"))
-pushfold_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\pushfold.png"))
-BTN_open11_15_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BTN_open11_15.png"))
-BTN_open17_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BTN_open17.png"))
-BTN_open10_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BTN_open10.png"))
-SB_btn_folds11_16_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\SB_btn_folds11_16.png"))
-SB_btn_folds17_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\SB_btn_folds17.png"))
+hu_img                      = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\headsup.png"))
+pushfold_img                = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\pushfold.png"))
+notsupported_img            = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\range_not_supported.png"))
+BTN_open11_15_img           = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BTN_open11_15.png"))
+BTN_open17_img              = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BTN_open17.png"))
+BTN_open10_img              = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BTN_open10.png"))
+SB_btn_folds11_16_img       = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\SB_btn_folds11_16.png"))
+SB_btn_folds17_img          = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\SB_btn_folds17.png"))
+SB_btn_limp11_16_img        = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\SB_btn_limp11_16.png"))
+SB_btn_limp17_25_img        = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\SB_btn_limp17_25.png"))
+SB_btn_open10_img           = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\SB_btn_open10.png"))
+SB_btn_open11_16_img        = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\SB_btn_open11_16.png"))
+SB_btn_open17_img           = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\SB_btn_open17.png"))
+BB_btn_and_sb_limp11_16_img = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BB_btn_and_sb_limp11_16.png"))
+BB_btn_and_sb_limp17_img    = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BB_btn_and_sb_limp17.png"))
+BB_btn_or_sb_open11_16_img  = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BB_btn_or_sb_open11_16.png"))
+BB_btn_or_sb_open17_img     = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BB_btn_or_sb_open17.png"))
+BB_sb_limp10_img            = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BB_sb_limp10.png"))
+BB_sb_limp11_16_img         = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BB_sb_limp11_16.png"))
+BB_sb_limp17_img            = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BB_sb_limp17.png"))
+BB_sb_open11_16_img         = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BB_sb_open11_16.png"))
+BB_sb_open17_25_img         = ImageTk.PhotoImage(Image.open(cwd + "\\spin_ranges\\BB_sb_open17_25.png"))
 
 # A Radiobutton to toggle between images
 position = IntVar()
@@ -44,6 +59,43 @@ def call():
             canvas.create_image((2, 2), image=SB_btn_folds17_img, anchor=NW)
         elif bigblinds.get() == 10 and action.get() == 5:
             canvas.create_image((2, 2), image=pushfold_img, anchor=NW)
+        elif bigblinds.get() == 11 and action.get() == 6:
+            canvas.create_image((2, 2), image=SB_btn_limp11_16_img, anchor=NW)
+        elif bigblinds.get() == 17 and action.get() == 6:
+            canvas.create_image((2, 2), image=SB_btn_limp17_25_img, anchor=NW)
+        elif bigblinds.get() == 10 and action.get() == 7:
+            canvas.create_image((2, 2), image=SB_btn_open10_img, anchor=NW)
+        elif bigblinds.get() == 11 and action.get() == 7:
+            canvas.create_image((2, 2), image=SB_btn_open11_16_img, anchor=NW)
+        elif bigblinds.get() == 17 and action.get() == 7:
+            canvas.create_image((2, 2), image=SB_btn_open17_img, anchor=NW) 
+        else:
+            canvas.create_image((2, 2), image=notsupported_img, anchor=NW)
+    elif position.get() == 3:
+        #bb spingo
+        if bigblinds.get() == 11 and action.get() == 1:
+            canvas.create_image((2, 2), image=BB_btn_and_sb_limp11_16_img, anchor=NW)
+        elif bigblinds.get() == 17 and action.get() == 1:
+            canvas.create_image((2, 2), image=BB_btn_and_sb_limp17_img, anchor=NW)
+        elif bigblinds.get() == 11 and action.get() == 2:
+            canvas.create_image((2, 2), image=BB_btn_or_sb_open11_16_img, anchor=NW)
+        elif bigblinds.get() == 17 and action.get() == 2:
+            canvas.create_image((2, 2), image=BB_btn_or_sb_open17_img, anchor=NW)
+        elif bigblinds.get() == 10 and action.get() == 3:
+            canvas.create_image((2, 2), image=BB_sb_limp10_img, anchor=NW)
+        elif bigblinds.get() == 11 and action.get() == 3:
+            canvas.create_image((2, 2), image=BB_sb_limp11_16_img, anchor=NW)
+        elif bigblinds.get() == 17 and action.get() == 3:
+            canvas.create_image((2, 2), image=BB_sb_limp17_img, anchor=NW)
+        elif bigblinds.get() == 11 and action.get() == 4:
+            canvas.create_image((2, 2), image=BB_sb_open11_16_img, anchor=NW)
+        elif bigblinds.get() == 17 and action.get() == 4:
+            canvas.create_image((2, 2), image=BB_sb_open17_25_img, anchor=NW)
+        else:
+            canvas.create_image((2, 2), image=notsupported_img, anchor=NW)
+    else:
+        canvas.create_image((2, 2), image=notsupported_img, anchor=NW)
+
             
 
 #Description
